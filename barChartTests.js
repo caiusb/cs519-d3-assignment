@@ -1,13 +1,10 @@
 QUnit.begin(function () {
-	test-div = document.getElementById("test-test-div");
-	notEqual(test-div, null, "The initial test-div must exist");
+	testDiv = document.getElementById("test-div");
+	barChart(testDiv);
 });
 
 test("Test SVG Element Creation", function () {
-
-	barChart(test-div);
-
-	var svg = test-div.firstElementChild;
+	var svg = testDiv.firstElementChild;
 	notEqual(svg, null, "Failed to create SVG element");
 	equal(svg.tagName, "svg", "Element type is not SVG");
 });

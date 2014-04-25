@@ -1,3 +1,5 @@
 function barChart(selection) {
-	var svg = d3.select(selection).append("svg");
+	selection.each(function(data) {
+		var svg = selection.append("svg");
+	});
 }

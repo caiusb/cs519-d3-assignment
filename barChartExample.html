@@ -9,5 +9,9 @@
   <div id="barchart"></div>
   <script src="d3.js"></script>
   <script src="barChart.js"></script>
+  <script>
+  	var testData = [10, 12, 5, 12, 34, 22, 43, 43, 8];
+  	d3.select("#barchart").datum(testData).call(barChart);
+  </script>
 </body>
 </html>

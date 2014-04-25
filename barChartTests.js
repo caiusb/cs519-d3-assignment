@@ -1,3 +1,5 @@
+var testDiv;
+
 QUnit.begin(function () {
 	testDiv = document.getElementById("test-div");
 	barChart(testDiv);

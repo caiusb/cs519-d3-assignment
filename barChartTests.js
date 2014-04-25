@@ -20,3 +20,9 @@ test("Test Add Bars", function testAddBars() {
 	equal(svg.children.length, dataPointsNo, "I should have " + dataPointsNo + " data points");
 });
 
+test("Test Bar Height", function testBarHeight() {
+	var children = svg.children;
+	for (var i=0; i < data.length; i++) {
+		equal(children[i].getAttribute("y"), data[i], "The bar should be the height of the data");
+	}
+});

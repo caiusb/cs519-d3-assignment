@@ -4,9 +4,10 @@ var dataPointsNo = 10;
 var svg;
 
 QUnit.begin(function () {
-	var testDiv = d3.select("#test-div").datum(data);
-	console.log(testDiv)
-	barChart(testDiv);
+	var testChart = barChart();
+	var testDiv = d3.select("#test-div")
+		.datum(data)
+		.call(testChart);
 	testDivDOM = document.getElementById("test-div");
 	svg = testDivDOM.firstElementChild;
 });

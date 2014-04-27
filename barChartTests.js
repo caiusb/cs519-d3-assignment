@@ -1,7 +1,11 @@
 var testDivDOM;
 var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-var dataPointsNo = 10;
+var dataPointsNo = data.length;
 var svg;
+
+var chartWidth = 500;
+var chartHeight = 100;
+var barPadding = 1;
 
 QUnit.begin(function () {
 	var testChart = barChart();
@@ -53,6 +57,6 @@ test("Test Bar Y Position", function testBarYPosition() {
 test("Give Bars some width", function testBarWidth() {
 	var children = svg.children;
 	for (var i=0; i < data.length; i++) {
-		equal(children[i].getAttribute("width"), 50, "The bars should be of width 50");
+		equal(children[i].getAttribute("width"), chartWidth/dataPointsNo - barPadding, "The bars should be of width 50");
 	}
 });

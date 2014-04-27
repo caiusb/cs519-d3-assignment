@@ -80,3 +80,10 @@ var getTextChildren = function(htmlCollection) {
 		return e.tagName === "text";
 	});
 }
+
+test("Add text on the bars", function testText() {
+	var textChildren = getTextChildren(svg.children);
+	for (var i=0; i< data.length; i++) {
+		equal(d3.select(textChildren[i]).text(), data[i], "The text should be equal to the value");
+	}
+});

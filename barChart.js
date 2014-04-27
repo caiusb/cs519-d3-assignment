@@ -29,6 +29,15 @@ function barChart() {
 					return d*scalingFactor;
 				})
 				.attr("width",barWidth);
+
+			svg.selectAll("text")
+				.data(data)
+				.enter()
+				.append("text")
+				.text(function(d) {
+					console.log(d);
+					return d;
+				});
 		});
 	}
 

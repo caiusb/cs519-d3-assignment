@@ -1,4 +1,10 @@
 function barChart(selection) {
+	var h = 100; // height
+	var w = 500; // width
+
+	var barWidth = 50;
+	var scalingFactor = 1;
+
 	selection.each(function(data) {
 		var svg = selection.append("svg");
 
@@ -7,14 +13,14 @@ function barChart(selection) {
 			.enter()
 			.append("rect")
 			.attr("x", function(d, i) {
-				return i*50;
+				return i*barWidth;
 			})
 			.attr("y", function(d) {
-				return 100 - d;
+				return h - d;
 			})
 			.attr("height", function(d) {
 				return d;
 			})
-			.attr("width",50);
+			.attr("width",barWidth);
 	});
 }

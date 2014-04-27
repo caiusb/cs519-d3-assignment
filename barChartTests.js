@@ -26,3 +26,10 @@ test("Test Bar Height", function testBarHeight() {
 		equal(children[i].getAttribute("y"), data[i], "The bar should be the height of the data");
 	}
 });
+
+test("Test Bar Postion", function testBarPosition() {
+	var children = svg.children;
+	for (var i=0; i< data.length; i++) {
+		equal(children[i].getAttribute("x"), i*50, "The bars should be progressively to the right");
+	}
+});

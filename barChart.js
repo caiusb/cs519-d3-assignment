@@ -6,6 +6,9 @@ function barChart(selection) {
 			.data(data)
 			.enter()
 			.append("rect")
+			.attr("x", function(d, i) {
+				return i*50;
+			})
 			.attr("y", function(d) {
 				return d;
 			});

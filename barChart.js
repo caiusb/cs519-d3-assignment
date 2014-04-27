@@ -39,5 +39,12 @@ function barChart() {
 		return chart;
 	}
 
+	chart.height = function(newHeight) {
+		if (arguments.length == 0)
+			return height;
+		height = newHeight;
+		return chart;
+	}
+
 	return chart;
 }

@@ -9,7 +9,8 @@ var barPadding = 1;
 
 QUnit.begin(function () {
 	var testChart = barChart()
-		.width(chartWidth);
+		.width(chartWidth)
+		.height(chartHeight);
 	var testDiv = d3.select("#test-div")
 		.datum(data)
 		.call(testChart);
@@ -23,7 +24,7 @@ test("Test SVG Element Creation", function testSVGElement() {
 });
 
 test("Test SVG Height", function testSVGHeight() {
-	equal(svg.getAttribute("height"), 100, "The heigth of the SVG should be 100");
+	equal(svg.getAttribute("height"), chartHeight, "The heigth of the SVG should be 100");
 });
 
 test("Test SVN Width", function testSVNWidth() {
@@ -51,7 +52,7 @@ test("Test Bar X Postion", function testBarXPosition() {
 test("Test Bar Y Position", function testBarYPosition() {
 	var children = svg.children;
 	for (var i=0; i < data.length; i++) {
-		equal(children[i].getAttribute("y"), 100-data[i], "The bars should be alligned on the lower edges");
+		equal(children[i].getAttribute("y"), chartHeight-data[i], "The bars should be alligned on the lower edges");
 	}
 })
 

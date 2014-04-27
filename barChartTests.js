@@ -33,3 +33,10 @@ test("Test Bar Postion", function testBarPosition() {
 		equal(children[i].getAttribute("x"), i*50, "The bars should be progressively to the right");
 	}
 });
+
+test("Give Bars some width", function testBarWidth() {
+	var children = svg.children;
+	for (var i=0; i < data.length; i++) {
+		equal(children[i].getAttribute("width"), 50, "The bars should be of width 50");
+	}
+});

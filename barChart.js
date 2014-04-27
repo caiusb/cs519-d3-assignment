@@ -11,6 +11,7 @@ function barChart(selection) {
 			})
 			.attr("y", function(d) {
 				return d;
-			});
+			})
+			.attr("width",50);
 	});
 }

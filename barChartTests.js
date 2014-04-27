@@ -87,3 +87,10 @@ test("Add text on the bars", function testText() {
 		equal(d3.select(textChildren[i]).text(), data[i], "The text should be equal to the value");
 	}
 });
+
+test("Text X location", function textTextXLocation() {
+	var textChildren = getTextChildren(svg.children);
+	for (var i=0; i < data.length; i++) {
+		equal(textChildren[i].getAttribute("x"), i * (chartWidth/dataPointsNo) + (chartWidth/dataPointsNo - barPadding) / 2, "The position should increse incrementally");
+	}
+});

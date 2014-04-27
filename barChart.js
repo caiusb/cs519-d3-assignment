@@ -35,8 +35,10 @@ function barChart() {
 				.enter()
 				.append("text")
 				.text(function(d) {
-					console.log(d);
 					return d;
+				})
+				.attr("x", function(d, i) {
+					return i * (barWidth + barPadding) + (barWidth)  / 2;
 				});
 		});
 	}

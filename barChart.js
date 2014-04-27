@@ -9,6 +9,9 @@ function barChart(selection) {
 			.attr("x", function(d, i) {
 				return i*50;
 			})
+			.attr("y", function(d) {
+				return 100 - d;
+			})
 			.attr("height", function(d) {
 				return d;
 			})

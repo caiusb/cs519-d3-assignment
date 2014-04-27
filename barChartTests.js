@@ -27,12 +27,19 @@ test("Test Bar Height", function testBarHeight() {
 	}
 });
 
-test("Test Bar X Postion", function testBarYPosition() {
+test("Test Bar X Postion", function testBarXPosition() {
 	var children = svg.children;
 	for (var i=0; i< data.length; i++) {
 		equal(children[i].getAttribute("x"), i*50, "The bars should be progressively to the right");
 	}
 });
+
+test("Test Bar Y Position", function testBarYPosition() {
+	var children = svg.children;
+	for (var i=0; i < data.length; i++) {
+		equal(children[i].getAttribute("y"), 100-data[i], "The bars should be alligned on the lower edges");
+	}
+})
 
 test("Give Bars some width", function testBarWidth() {
 	var children = svg.children;

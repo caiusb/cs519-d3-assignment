@@ -55,7 +55,7 @@ test("Test Bar X Postion", function testBarXPosition() {
 test("Test Bar Y Position", function testBarYPosition() {
 	var children = svg.children;
 	for (var i=0; i < data.length; i++) {
-		equal(children[i].getAttribute("y"), chartHeight-data[i], "The bars should be alligned on the lower edges");
+		equal(children[i].getAttribute("y"), chartHeight-data[i]*scaling, "The bars should be alligned on the lower edges");
 	}
 })
 

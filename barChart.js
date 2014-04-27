@@ -23,7 +23,7 @@ function barChart() {
 					return i*(barWidth + barPadding);
 				})
 				.attr("y", function(d) {
-					return height - d;
+					return height - d*scalingFactor;
 				})
 				.attr("height", function(d) {
 					return d*scalingFactor;

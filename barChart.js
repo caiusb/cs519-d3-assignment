@@ -39,7 +39,12 @@ function barChart() {
 				})
 				.attr("x", function(d, i) {
 					return i * (barWidth + barPadding) + (barWidth)  / 2;
-				});
+				})
+				.attr("y", function(d) {
+					return height - d*scalingFactor + 14; 
+				})
+				.style("fill","white")
+				.style("text-anchor","middle");
 		});
 	}
 

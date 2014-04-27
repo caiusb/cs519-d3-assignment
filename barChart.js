@@ -9,7 +9,7 @@ function barChart(selection) {
 			.attr("x", function(d, i) {
 				return i*50;
 			})
-			.attr("y", function(d) {
+			.attr("height", function(d) {
 				return d;
 			})
 			.attr("width",50);

@@ -23,7 +23,7 @@ test("Test Add Bars", function testAddBars() {
 test("Test Bar Height", function testBarHeight() {
 	var children = svg.children;
 	for (var i=0; i < data.length; i++) {
-		equal(children[i].getAttribute("y"), data[i], "The bar should be the height of the data");
+		equal(children[i].getAttribute("height"), data[i], "The bar should be the height of the data");
 	}
 });
 

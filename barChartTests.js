@@ -34,12 +34,20 @@ test("Test SVN Width", function testSVNWidth() {
 	equal(svg.getAttribute("width"), chartWidth, "The width of the SVG should be 500");
 });
 
+var getRectChildren = function(htmlCollection) {
+	var array = Array.prototype.slice.call(htmlCollection);
+	return array.filter(function(e) {
+		return e.tagName === "rect";
+	});
+}
+
 test("Test Add Bars", function testAddBars() {
-	equal(svg.children.length, dataPointsNo, "I should have " + dataPointsNo + " data points");
+	var children = getRectChildren(svg.children);
+	equal(children.length, dataPointsNo, "I should have " + dataPointsNo + " data points");
 });
 
 test("Test Bar Height", function testBarHeight() {
-	var children = svg.children;
+	var children = getRectChildren(svg.children);
 	for (var i=0; i < data.length; i++) {
 		equal(children[i].getAttribute("height"), data[i]*scaling, "The bar should be the height of the data");
 	}
@@ -65,3 +73,10 @@ test("Give Bars some width", function testBarWidth() {
 		equal(children[i].getAttribute("width"), chartWidth/dataPointsNo - barPadding, "The bars should be of width 50");
 	}
 });
+
+var getTextChildren = function(htmlCollection) {
+	var array = Array.prototype.slice.call(htmlCollection);
+	return array.filter(function(e) {
+		return e.tagName === "text";
+	});
+}

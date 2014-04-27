@@ -16,6 +16,14 @@ test("Test SVG Element Creation", function testSVGElement() {
 	equal(svg.tagName, "svg", "Element type is not SVG");
 });
 
+test("Test SVG Height", function testSVGHeight() {
+	equal(svg.getAttribute("height"), 100, "The heigth of the SVG should be 100");
+});
+
+test("Test SVN Width", function testSVNWidth() {
+	equal(svg.getAttribute("width"), 500, "The width of the SVG should be 500");
+});
+
 test("Test Add Bars", function testAddBars() {
 	equal(svg.children.length, dataPointsNo, "I should have " + dataPointsNo + " data points");
 });

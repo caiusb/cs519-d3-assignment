@@ -32,5 +32,12 @@ function barChart() {
 		});
 	}
 
+	chart.width = function(newWidth) {
+		if (arguments.length == 0)
+			return width;
+		width = newWidth;
+		return chart;
+	}
+
 	return chart;
 }

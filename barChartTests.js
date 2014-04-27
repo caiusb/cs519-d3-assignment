@@ -27,7 +27,7 @@ test("Test Bar Height", function testBarHeight() {
 	}
 });
 
-test("Test Bar Postion", function testBarPosition() {
+test("Test Bar X Postion", function testBarYPosition() {
 	var children = svg.children;
 	for (var i=0; i< data.length; i++) {
 		equal(children[i].getAttribute("x"), i*50, "The bars should be progressively to the right");

@@ -5,12 +5,15 @@ var svg;
 
 var chartWidth = 600;
 var chartHeight = 200;
-var barPadding = 1;
+var barPadding = 2;
+var scaling = 2;
 
 QUnit.begin(function () {
 	var testChart = barChart()
 		.width(chartWidth)
-		.height(chartHeight);
+		.height(chartHeight)
+		.padding(barPadding)
+		.scaling(scaling);
 	var testDiv = d3.select("#test-div")
 		.datum(data)
 		.call(testChart);
@@ -38,7 +41,7 @@ test("Test Add Bars", function testAddBars() {
 test("Test Bar Height", function testBarHeight() {
 	var children = svg.children;
 	for (var i=0; i < data.length; i++) {
-		equal(children[i].getAttribute("height"), data[i], "The bar should be the height of the data");
+		equal(children[i].getAttribute("height"), data[i]*scaling, "The bar should be the height of the data");
 	}
 });
 

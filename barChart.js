@@ -26,7 +26,7 @@ function barChart() {
 					return height - d;
 				})
 				.attr("height", function(d) {
-					return d;
+					return d*scalingFactor;
 				})
 				.attr("width",barWidth);
 		});
@@ -43,6 +43,20 @@ function barChart() {
 		if (arguments.length == 0)
 			return height;
 		height = newHeight;
+		return chart;
+	}
+
+	chart.padding = function(newPadding) {
+		if (arguments.length == 0)
+			return barPadding;
+		barPadding = newPadding;
+		return chart;
+	}
+
+	chart.scaling = function(newScaling) {
+		if (arguments.length == 0)
+			return scalingFactor;
+		scalingFactor = newScaling;
 		return chart;
 	}
 

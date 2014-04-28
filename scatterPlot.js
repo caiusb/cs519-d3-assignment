@@ -41,6 +41,22 @@ function scatterPlot() {
 				.attr("cy", function(d) {
 					return yScale(yValue(d));
 				});
+
+			var xAxis = d3.svg.axis()
+				.scale(xScale)
+				.orient("bottom");
+			svg.append("g")
+				.attr("class","axis")
+				.attr("transform","translate(0," + getInnerHeight() + ")")
+				.call(xAxis);
+
+			var yAxis = d3.svg.axis()
+				.scale(yScale)
+				.orient("left");
+			svg.append("g")
+				.attr("class","axis")
+				.attr("transform","translate(" + margin.left + ",0)")
+				.call(yAxis);
 	});
   }
 

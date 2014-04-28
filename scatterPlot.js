@@ -35,6 +35,7 @@ function scatterPlot() {
 				.domain([d3.min(data, yValue) - 1, d3.max(data, yValue) + 1]);
 
 			var color = d3.scale.category20();
+			color.domain(data.map(function(d) { return category(d); }));
 
 			var tooltip = d3.select("body").append("div")
 				.attr("class", "tooltip")
@@ -82,6 +83,25 @@ function scatterPlot() {
 				.attr("class","axis")
 				.attr("transform","translate(" + margin.left + ",0)")
 				.call(yAxis);
+
+			var legend = svg.selectAll(".legend")
+				.data(color.domain())
+				.enter()
+				.append("g")
+				.attr("class", "legend")
+				.attr("transform", function(d,i) { return "translate(0," + i *20 + ")"; });
+			legend.append("rect")
+				.attr("x",width - 18)
+				.attr("width",18)
+				.attr("height",18)
+				.style("fill",color);
+
+			legend.append("text")
+				.attr("x", width-24)
+				.attr("y", 9)
+				.attr("dy", ".35em")
+				.style("text-anchor","end")
+				.text(function(d) { return d; });
 	});
   }
 

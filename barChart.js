@@ -131,5 +131,12 @@ function barChart() {
 		return chart;
 	}
 
+	chart.margins = function(newMargin) {
+		if (arguments.length == 0)
+			return margins;
+		margins = newMarigns;
+		return chart;
+	}
+
 	return chart;
 }

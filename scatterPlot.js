@@ -18,6 +18,7 @@ function scatterPlot() {
 	var xValue = function(d) { return +d.xValue; } // force to number
 	var yValue = function(d) { return +d.yValue; } // force to number
 	var label = function(d) { return d.label; } 
+	var category = function(d) { return d.category; }
 
 	var chart = function(selection) {
 		selection.each(function(data) {
@@ -33,6 +34,8 @@ function scatterPlot() {
 				.rangeRound([getInnerHeight(), margin.top])
 				.domain([d3.min(data, yValue) - 1, d3.max(data, yValue) + 1]);
 
+			var color = d3.scale.category20();
+
 			var tooltip = d3.select("body").append("div")
 				.attr("class", "tooltip")
 				.style("opacity", 0);
@@ -41,6 +44,7 @@ function scatterPlot() {
 				.data(data)
 				.enter()
 				.append("circle")
+				.style("fill", function(d) { return color(category(d)); })
 				.attr("r", circleRadius)
 				.attr("cx", function(d) {
 					return xScale(xValue(d));

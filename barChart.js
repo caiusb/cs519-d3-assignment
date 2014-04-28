@@ -43,6 +43,7 @@ function barChart() {
 				.data(data)
 				.enter()
 				.append("rect")
+				.attr("class", "bar")
 				.attr("x", function(d) {
 					return xScale(d.label);
 				})

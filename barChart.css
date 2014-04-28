@@ -1,3 +1,11 @@
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
 .axis path,
 .axis line {
     fill: none;

@@ -8,6 +8,8 @@ function barChart() {
 	var barPadding = .1;
 	var scalingFactor = 1;
 
+	var yLabel = "Some label here";
+
 	var getInnerWidth = function() {
 		return width - margin.left  - margin.right;
 	}
@@ -67,6 +69,28 @@ function barChart() {
 				})
 				.style("fill","white")
 				.style("text-anchor","middle");
+
+			var xAxis = d3.svg.axis()
+				.scale(xScale)
+				.orient("bottom");
+			svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(0," + getInnerHeight() + ")")
+				.call(xAxis);
+
+			var yAxis = d3.svg.axis()
+				.scale(yScale)
+				.orient("left")
+				.ticks(4);
+			svg.append("g")
+				.attr("class","axis")
+				.call(yAxis)
+				.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 6)
+				.attr("dy",".71em")
+				.style("text-anchor","end")
+				.text(yLabel);
 		});
 	}
 
@@ -95,6 +119,13 @@ function barChart() {
 		if (arguments.length == 0)
 			return scalingFactor;
 		scalingFactor = newScaling;
+		return chart;
+	}
+
+	chart.yLabel = function(newLabel) {
+		if (arguments.length == 0)
+			return yLabel;
+		yLabel = newLabel;
 		return chart;
 	}
 

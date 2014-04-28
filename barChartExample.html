@@ -20,7 +20,7 @@
 		{label: "F", value: "16"},
 		{label: "G", value: "10"}
 	];
-  	var myBarChart = barChart()
+  	var myBarChart = barChart().height(500).yLabel("Bla");
   	d3.select("#barchart").datum(testData).call(myBarChart);
   </script>
 </body>

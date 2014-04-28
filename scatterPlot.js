@@ -30,11 +30,7 @@ function scatterPlot() {
 				.rangeRound([getInnerHeight(), margin.top])
 				.domain([d3.min(data, yValue), d3.max(data, yValue)]);
 
-			console.log(yScale.domain());
-			console.log(d3.min(data, yValue));
-			console.log(d3.max(data, yValue));
-
-			svg.selectAll("dot")
+			svg.selectAll(".dot")
 				.data(data)
 				.enter()
 				.append("circle")

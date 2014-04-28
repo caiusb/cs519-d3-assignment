@@ -1,12 +1,14 @@
 var testDivDOM;
-var data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+var data = [{label: "A", value: "20"}, {label: "B", value: "18"}, {label: "C", value: "17"}];
 var dataPointsNo = data.length;
 var svg;
 
 var chartWidth = 600;
 var chartHeight = 200;
-var barPadding = 2;
+var barPadding = .1;
 var scaling = 2;
+
+var margin = {top: 20, right: 30, bottom: 30, left: 40};
 
 QUnit.begin(function () {
 	var testChart = barChart()
@@ -48,29 +50,33 @@ test("Test Add Bars", function testAddBars() {
 
 test("Test Bar Height", function testBarHeight() {
 	var children = getRectChildren(svg.children);
+	var expectedHeights = [75, 67.5, 63.75];
 	for (var i=0; i < data.length; i++) {
-		equal(children[i].getAttribute("height"), data[i]*scaling, "The bar should be the height of the data");
+		equal(children[i].getAttribute("height"), expectedHeights[i], "The bar should be the height of the data");
 	}
 });
 
 test("Test Bar X Postion", function testBarXPosition() {
 	var children = svg.children;
+	var expectedPosition = [19, 189, 359];
 	for (var i=0; i< data.length; i++) {
-		equal(children[i].getAttribute("x"), i*(chartWidth/dataPointsNo), "The bars should be progressively to the right");
+		equal(children[i].getAttribute("x"), expectedPosition[i], "The bars should be progressively to the right");
 	}
 });
 
 test("Test Bar Y Position", function testBarYPosition() {
 	var children = svg.children;
+	var expectedPosition = [75, 82.5, 86.25];
 	for (var i=0; i < data.length; i++) {
-		equal(children[i].getAttribute("y"), chartHeight-data[i]*scaling, "The bars should be alligned on the lower edges");
+		equal(children[i].getAttribute("y"), expectedPosition[i], "The bars should be alligned on the lower edges");
 	}
 })
 
 test("Give Bars some width", function testBarWidth() {
 	var children = svg.children;
+	var expectedWidth = 153;
 	for (var i=0; i < data.length; i++) {
-		equal(children[i].getAttribute("width"), chartWidth/dataPointsNo - barPadding, "The bars should be of width 50");
+		equal(children[i].getAttribute("width"), expectedWidth, "The bars should be of width " + expectedWidth);
 	}
 });
 
@@ -84,20 +90,22 @@ var getTextChildren = function(htmlCollection) {
 test("Add text on the bars", function testText() {
 	var textChildren = getTextChildren(svg.children);
 	for (var i=0; i< data.length; i++) {
-		equal(d3.select(textChildren[i]).text(), data[i], "The text should be equal to the value");
+		equal(d3.select(textChildren[i]).text(), data[i].value, "The text should be equal to the value");
 	}
 });
 
 test("Text X location", function textTextXLocation() {
 	var textChildren = getTextChildren(svg.children);
+	var expectedLocation = [95.5, 265.5, 435.5];
 	for (var i=0; i < data.length; i++) {
-		equal(textChildren[i].getAttribute("x"), i * (chartWidth/dataPointsNo) + (chartWidth/dataPointsNo - barPadding) / 2, "The position should increse incrementally");
+		equal(textChildren[i].getAttribute("x"), expectedLocation[i], "The position should increse incrementally");
 	}
 });
 
 test("Text Y location", function testTextYLocation() {
 	var textChildren = getTextChildren(svg.children);
+	var expectedLocation = [89, 96.5, 100.25];
 	for (var i=0; i < data.length; i++) {
-		equal(textChildren[i].getAttribute("y"), chartHeight - (data[i] * scaling) + 14);
+		equal(textChildren[i].getAttribute("y"), expectedLocation[i]);
 	}
 });

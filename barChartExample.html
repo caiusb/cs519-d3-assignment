@@ -3,14 +3,23 @@
 <head>
   <meta charset="utf-8">
   <title>BarChard Example</title>
-  <link rel="stylesheet" href="qunit.css">
+  <link rel="stylesheet" href="qunit.css"/>
+  <link rel="stylesheet" href="barChart.css"/>
 </head>
 <body>
   <div id="barchart"></div>
   <script src="d3.js"></script>
   <script src="barChart.js"></script>
   <script>
-  	var testData = [10, 12, 5, 12, 34, 22, 43, 43, 8];
+  	var testData = [
+		{label: "A", value: "20"},
+		{label: "B", value: "18"},
+		{label: "C", value: "8"},
+		{label: "D", value: "21"},
+		{label: "E", value: "25"},
+		{label: "F", value: "16"},
+		{label: "G", value: "10"}
+	];
   	var myBarChart = barChart()
   	d3.select("#barchart").datum(testData).call(myBarChart);
   </script>

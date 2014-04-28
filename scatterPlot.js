@@ -5,6 +5,8 @@ function scatterPlot() {
 
 	var margin = {top: 20, left: 30, right: 30, bottom: 20};
 
+	var circleRadius = 3.5;
+
 	var getInnerWidth = function() {
 		return width - margin.left - margin.right;
 	}
@@ -25,16 +27,16 @@ function scatterPlot() {
 	  
 			var xScale = d3.scale.linear()
 				.rangeRound([margin.left, getInnerWidth()])
-				.domain([d3.min(data, xValue), d3.max(data,xValue)]);
+				.domain([d3.min(data, xValue) - 1, d3.max(data,xValue) + 1]);
 			var yScale = d3.scale.linear()
 				.rangeRound([getInnerHeight(), margin.top])
-				.domain([d3.min(data, yValue), d3.max(data, yValue)]);
+				.domain([d3.min(data, yValue) - 1, d3.max(data, yValue) + 1]);
 
 			svg.selectAll(".dot")
 				.data(data)
 				.enter()
 				.append("circle")
-				.attr("r", 3.5)
+				.attr("r", circleRadius)
 				.attr("cx", function(d) {
 					return xScale(xValue(d));
 				})

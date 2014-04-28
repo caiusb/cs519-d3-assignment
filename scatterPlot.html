@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ScatterPlot Example</title>
+  <link rel="stylesheet" href="scatterPlot.css"/>
+</head>
+<body>
+  <div id="scatterplot"></div>
+  <script src="d3.js"></script>
+  <script src="scatterPlot.js"></script>
+  <script>
+  	var testData = [
+		{label: "A", xValue: "20", yValue: "23"},
+		{label: "B", xValue: "18", yValue: "5"},
+		{label: "C", xValue: "11", yValue: "5"},
+		{label: "D", xValue: "21", yValue: "19"},
+		{label: "E", xValue: "25", yValue: "11"},
+		{label: "F", xValue: "16", yValue: "15"},
+		{label: "G", xValue: "10", yValue: "6"}
+	];
+  	var myScatterPlot = scatterPlot();
+  	d3.select("#scatterplot").datum(testData).call(myScatterPlot);
+  </script>
+</body>
+</html>

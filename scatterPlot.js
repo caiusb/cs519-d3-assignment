@@ -17,6 +17,7 @@ function scatterPlot() {
 
 	var xValue = function(d) { return +d.xValue; } // force to number
 	var yValue = function(d) { return +d.yValue; } // force to number
+	var label = function(d) { return d.label; } 
 
 	var chart = function(selection) {
 		selection.each(function(data) {
@@ -32,6 +33,10 @@ function scatterPlot() {
 				.rangeRound([getInnerHeight(), margin.top])
 				.domain([d3.min(data, yValue) - 1, d3.max(data, yValue) + 1]);
 
+			var tooltip = d3.select("body").append("div")
+				.attr("class", "tooltip")
+				.style("opacity", 0);
+
 			svg.selectAll(".dot")
 				.data(data)
 				.enter()
@@ -42,6 +47,20 @@ function scatterPlot() {
 				})
 				.attr("cy", function(d) {
 					return yScale(yValue(d));
+				})
+				.on("mouseover", function(d) {
+					tooltip.transition()
+						.duration(200)
+						.style("opacity",1);
+					tooltip.html(label(d) + "<br />(" +
+							xValue(d) + ", " + yValue(d) + ")")
+						.style("left", (d3.event.pageX + 5) + "px")
+						.style("top", (d3.event.pageY - 28) + "px");
+				})
+				.on("mouseout", function(d) {
+					tooltip.transition()
+						.duration(200)
+						.style("opacity",0);
 				});
 
 			var xAxis = d3.svg.axis()

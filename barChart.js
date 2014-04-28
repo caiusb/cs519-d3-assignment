@@ -28,7 +28,7 @@ function barChart() {
 				.range([getInnerHeight(), 0]);
 
 			xScale.domain(data.map(function(d){return d.label;}))
-				.rangeRoundBands([0,getInnerWidth()], barPadding);
+				.rangeRoundBands([margin.left ,getInnerWidth()], barPadding);
 			yScale.domain([0, d3.max(data, function(d) { 
 					return d.value*scalingFactor; 
 				})
@@ -82,9 +82,10 @@ function barChart() {
 			var yAxis = d3.svg.axis()
 				.scale(yScale)
 				.orient("left")
-				.ticks(4);
+				.ticks(10);
 			svg.append("g")
 				.attr("class","axis")
+				.attr("transform", "translate(" + margin.left + ",0)")
 				.call(yAxis)
 				.append("text")
 				.attr("transform", "rotate(-90)")

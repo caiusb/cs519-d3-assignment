@@ -105,5 +105,54 @@ function scatterPlot() {
 		});
 	}
 
+	chart.height = function(newHeight) {
+		if (arguments.length == 0)
+			return height;
+		height = newHeight;
+		return chart;
+	}
+
+	chart.width = function(newWidth) {
+		if (arguments.length == 0)
+			return width;
+		width = newWidth;
+		return chart;
+	}
+
+	chart.circleRadius = function(newRadius) {
+		if (arguments.length == 0)
+			return circleRadius;
+		circleRadius = newRadius;
+		return chart;
+	}
+
+	chart.xValue = function(newXValueFunction) {
+		if (arguments.length == 0)
+			return xValue;
+		xValue = newXValueFunction;
+		return chart;
+	}
+
+	chart.yValue = function(newYValueFunction) {
+		if (arguments.length == 0)
+			return yValue;
+		yValue = newYValueFunction;
+		return chart;
+	}
+
+	chart.label = function(newLabelFunction) {
+		if (arguments.length == 0)
+			return label;
+		label = newLabelFunction;
+		return chart;
+	}
+
+	chart.category = function(newCategoryFunction) {
+		if (arguments.length == 0)
+			return category;
+		category = newCategoryFunction;
+		return chart;
+	}
+
 	return chart;
 }

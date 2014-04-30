@@ -26,7 +26,7 @@ function scatterPlot() {
 
 			svg.attr("height", height).
 				attr("width", width);
-	  
+		
 			var xScale = d3.scale.linear()
 				.rangeRound([margin.left, getInnerWidth()])
 				.domain([d3.min(data, xValue) - 1, d3.max(data,xValue) + 1]);
@@ -102,8 +102,8 @@ function scatterPlot() {
 				.attr("dy", ".35em")
 				.style("text-anchor","end")
 				.text(function(d) { return d; });
-	});
-  }
+		});
+	}
 
-  return chart;
+	return chart;
 }

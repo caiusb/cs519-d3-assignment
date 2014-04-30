@@ -11,15 +11,29 @@
   <script src="scatterPlot.js"></script>
   <script>
   	var testData = [
-		{label: "A", xValue: "20", yValue: "23", category: "Cat 1"},
-		{label: "B", xValue: "18", yValue: "5", category: "Cat 2"},
-		{label: "C", xValue: "11", yValue: "5", category: "Cat 1"},
-		{label: "D", xValue: "21", yValue: "19", category: "Cat 3"},
-		{label: "E", xValue: "25", yValue: "11", category: "Cat 2"},
-		{label: "F", xValue: "16", yValue: "15", category: "Cat 1"},
-		{label: "G", xValue: "10", yValue: "6", category: "Cat 3"}
+		{aLabel: "A", anX: "20", anY: "23", aCategory: "Cat 1"},
+		{aLabel: "B", anX: "18", anY: "5", aCategory: "Cat 2"},
+		{aLabel: "C", anX: "11", anY: "5", aCategory: "Cat 1"},
+		{aLabel: "D", anX: "21", anY: "19", aCategory: "Cat 3"},
+		{aLabel: "E", anX: "25", anY: "11", aCategory: "Cat 2"},
+		{aLabel: "F", anX: "16", anY: "15", aCategory: "Cat 1"},
+		{aLabel: "G", anX: "10", anY: "6", aCategory: "Cat 3"}
 	];
-  	var myScatterPlot = scatterPlot();
+
+	//example of usage by a user
+  	var myScatterPlot = scatterPlot()
+		.height(400) // setting the height
+		.width(400) // setting the width
+		.circleRadius(4); // the radius of the circle representing a data point.
+
+	//The following functions allow to use this plot with any data.
+	//It allows for showing three dimensions of the data: X, Y and color. 
+	//The actual mapping is left to the user.
+	myScatterPlot.xValue(function(d) { return +d.anX }) // the function for the value to be plotted on the X Axis
+		.yValue(function(d) { return +d.anY }) // the function for the value to be plotted on the Y Axis
+		.label(function(d) { return d.aLabel}) // the label to be shows on each data point
+		.category(function(d) {return d.aCategory}); // the category of the data point (i.e. the third dimension)
+
   	d3.select("#scatterplot").datum(testData).call(myScatterPlot);
   </script>
 </body>

@@ -10,6 +10,13 @@
   <script src="d3.js"></script>
   <script src="streamGraph.js"></script>
   <script>
+		var data = [
+			[{x: 1, y: 12}, {x: 2, y: 17}, {x: 3, y: 2}, {x: 4, y: 3}],
+			[{x: 1, y: 12}, {x: 2, y: 1}, {x: 3, y: 7}, {x:4, y:11}],
+			[{x: 1, y: 2}, {x: 2, y: 3}, {x: 3, y: 8}, {x: 4, y:1}]
+		];
+		var myStreamGraph = streamGraph();
+		d3.select("#streamgraph").datum(data).call(myStreamGraph);
   </script>
 </body>
 </html>

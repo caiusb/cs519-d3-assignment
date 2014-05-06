@@ -31,8 +31,6 @@ var streamGraph = function() {
 
 	var chart = function(selection) {
 
-		// data is actually an array of arrays, each representing a layer
-		// the second array has x and y coordinates (or values to be mapped correspondingly)
 		selection.each(function(data) {
 
 			var xScale = d3.scale.linear()
@@ -96,6 +94,34 @@ var streamGraph = function() {
 				});
 ;
 		});
+	};
+
+	chart.xValue = function(newXValue) {
+		if (arguments.length == 0)
+			return xValue;
+		xValue = newXValue;
+		return chart;
+	};
+
+	chart.yValue = function(newYValue) {
+		if (arguments.length == 0)
+			return yValue;
+		yValue = newYValue;
+		return chart;
+	};
+
+	chart.name = function(newName) {
+		if (arguments.length == 0)
+			return name;
+		name = newName;
+		return chart;
+	};
+
+	chart.values = function(newValues) {
+		if (arguments.length == 0)
+			return values;
+		values = newValues;
+		return chart;
 	};
 
 	return chart;
